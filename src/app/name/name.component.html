@@ -1,0 +1,8 @@
+<form [formGroup]="fullNameControl">
+  <div>Full name*: </div>
+  <ul formArrayName="name">
+    <div class="form-group" *ngFor="let nameControl of fullNameControl.controls.name.controls; let i = index">
+      <input class="form-control" type="text" formControlName="{{i}}" required>
+    </div>
+  </ul>
+</form>

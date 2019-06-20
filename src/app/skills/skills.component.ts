@@ -12,7 +12,7 @@ import {of, Subject} from 'rxjs';
 export class SkillsComponent implements OnInit, OnDestroy {
 
   public skillsControl: FormGroup;
-  skills = [];
+  public skills: Array <{id: string, name: string}> = [];
 
   public subject$ = new Subject();
 
@@ -22,13 +22,13 @@ export class SkillsComponent implements OnInit, OnDestroy {
      this.skillsControl = this.formsService.getSkillsControl();
      this.skills = this.formsService.getSkills();
 
-     console.log(this.skillsControl);
-     console.log(this.skills);
+    //  console.log(this.skillsControl);
+    //  console.log(this.skills);
 
      this.skillsControl.valueChanges
         .pipe(takeUntil(this.subject$))
         .subscribe((value) => {
-          console.log(value);
+         // console.log(value);
         });
   }
 

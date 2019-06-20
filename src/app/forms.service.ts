@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Subject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +22,6 @@ export class FormsService {
     this.skillsControl = this.formBuilder.group({
       skills: ''
     });
-
-   /* this.skillsControl = this.formBuilder.group({
-      skills: this.formBuilder.array([
-        ['Angular'],
-        ['RXJS'],
-        ['Reactive Forms']
-      ])
-    });*/
   }
 
   getFullNameControl(): FormGroup {
@@ -39,7 +32,7 @@ export class FormsService {
     return this.skillsControl;
   }
 
-  getSkills() {
+  getSkills(): Array <{id: string, name: string}> {
     return [
       { id: '1', name: 'Angular' },
       { id: '2', name: 'RXJS' },
@@ -51,6 +44,5 @@ export class FormsService {
   setFullName(firstName: string, lastName: string): void {
     this.fullNameControl.controls.name.value[0] = firstName;
     this.fullNameControl.controls.name.value[1] = lastName;
-}
-
+  }
 }

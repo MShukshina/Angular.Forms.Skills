@@ -1,0 +1,7 @@
+<div *ngFor="let node of nodes; let i = index;">
+  <ul>
+      <button #button (click)="explandItem(node.label+'-'+i)" *ngIf="node.children" id="bt-{{node.label+'-'+i}}">+</button>
+      {{'  ' + node.label}}
+      <app-node [nodes]="node.children" *ngIf="node.children"  id="nd-{{node.label+'-'+i}}" ></app-node>
+  </ul>
+</div>

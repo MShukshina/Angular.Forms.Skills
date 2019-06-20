@@ -6,13 +6,19 @@ import { HeaderComponent } from './header/header.component';
 import { NameComponent } from './name/name.component';
 import { SkillsComponent } from './skills/skills.component';
 
-import {RouterModule, Router, Routes} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TreeFilesComponent } from './tree-files/tree-files.component';
+import { QueriesComponent } from './queries/queries.component';
+import { NodeComponent } from './tree-files/node/node.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'name', pathMatch: 'full'},
   { path: 'name', component: NameComponent},
   { path: 'skils', component: SkillsComponent},
+  { path: 'queries', component: QueriesComponent},
+  { path: 'tree', component: TreeFilesComponent},
 ];
 
 
@@ -22,12 +28,16 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     NameComponent,
-    SkillsComponent
+    SkillsComponent,
+    TreeFilesComponent,
+    QueriesComponent,
+    NodeComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot((appRoutes)),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

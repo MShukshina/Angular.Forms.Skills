@@ -23,20 +23,20 @@ export class NameComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
      this.fullNameControl = this.formsService.getFullNameControl();
-     console.log(this.fullNameControl);
+     // console.log(this.fullNameControl);
 
      this.fullNameControl.valueChanges
       .pipe(takeUntil(this.subject$))
       .subscribe((value) => {
         this.nameChange(value.name[0], value.name[1]);
-        console.log(value);
+        // console.log(value);
       });
   }
   ngOnDestroy(): void {
     this.subject$.unsubscribe();
   }
 
-  nameChange(firstName: string, lastName: string) {
+  nameChange(firstName: string, lastName: string): void {
     this.formsService.setFullName(firstName, lastName);
     this.fullNameControl = this.formsService.getFullNameControl();
   }
